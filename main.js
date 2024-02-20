@@ -6,7 +6,7 @@ document.getElementById('formulario-calculadora').addEventListener('submit', fun
 
 function calcularCalorias() {
 
-    
+
     const nombre = document.getElementById('nombre').value;
     const tipoDocumento = document.getElementById('tipo_documento').value;
     const numeroDocumento = document.getElementById('numero_documento').value;
@@ -59,7 +59,7 @@ function calcularCalorias() {
         <div class="card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
             <h5 class="card-title h2">Calorías requeridas</h5>
             
-            <p> El paciente: ${nombre} identificado con ${tipoDocumento} No.${numeroDocumento}, requiere un total de ${caloriasTotales.toFixed(0)} kcal para el sostenimiento de su TBM. Perteneciente al grupo poblacional: ${grupoPoblacional}" style="font-size: 1rem"> </p>
+            <p> El paciente: ${nombre} identificado con ${tipoDocumento} No.${numeroDocumento}, requiere un total de ${caloriasTotales.toFixed(0)} kcal para el sostenimiento de su TBM. Perteneciente al grupo poblacional: <strong>${grupoPoblacional} </strong> </p>
 
         </div>
     `;
