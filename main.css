@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 *,
 *::before,
 *::after {
@@ -6,8 +8,21 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-family: "Merriweather", serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
 
+h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+}
 
+p{
+    font-family: "Merriweather", serif;
+    font-size: 0.8rem;
+}
 
 body::-webkit-scrollbar {
     width: 8px;
@@ -23,9 +38,17 @@ body::-webkit-scrollbar-thumb {
     background-color: rgb(122, 0, 0);
 }
 
+header {
+    background-color: #ff8c6b;
+}
+
 /* header */
 .header a {
-    font-size: 1.4em;
+    font-size: 0.75em;
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    margin-left: 0.8em;
+    margin-right: 0.8em;
 }
 // .header a.active {
 //     text-decoration: underline;
@@ -34,7 +57,6 @@ body::-webkit-scrollbar-thumb {
 
 .navbar {
     background-color: #ff8c6b;
-    font-size: 10px;
 }
 
 .navbar-nav{
@@ -46,6 +68,40 @@ body::-webkit-scrollbar-thumb {
 .navbar-nav li a {
     color: #1c1e20;
     list-style-type: none;
+}
+
+/*wrapper hero */
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ff8c6b;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    padding-top: 8em;
+    background-color: #f4f4f4;
+    padding-bottom: 8em;
+    gap: 30px;
+}
+
+.left-col {
+    width: 550px;
+}
+
+.right-col {
+    width: 380px;
+    text-align: justify;
+}
+.right-col img {
+    width: 500px;
+    border-radius: 8px;
+}
+
+.highlighted{
+    font-weight: 800;
+    font-weight: bold;
 }
 
 /* main */
