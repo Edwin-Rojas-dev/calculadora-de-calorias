@@ -82,7 +82,7 @@ header {
     justify-content: center;
     padding-top: 8em;
     background-color: #f4f4f4;
-    padding-bottom: 8em;
+    padding-bottom: 4em;
     gap: 30px;
 }
 
@@ -104,6 +104,12 @@ header {
     font-weight: bold;
 }
 
+.buttonStart{
+    padding: 0.4em;
+    font-family: "Merriweather", serif;
+    margin-left: -12px;
+}
+
 /* main */
 .row {
     gap: 10px;
@@ -115,8 +121,46 @@ header {
     background-color: #ff8c6b;
 }
 .main-content .card {
-    color:rgb(223, 223, 223);
-    background-color: rgba(0, 0, 0, 0.5)
+    color:#1c1e20;
+    background-color:  #f4f4f4;
+}
+
+/*form*/
+.card {
+    padding: 2.4em;    
+}
+
+.main-content .card label {
+    font-family: "Merriweather", serif;
+    font-size: 0.8rem;
+    font-weight:400;
+}
+
+.form-select{
+    width: 230px;
+}
+
+.document{
+    width: 328px;
+}
+
+.inputInfo{
+    display: flex;
+    gap: 2em;
+}
+
+.data{
+    width: 110px;
+}
+
+.person {
+    display: flex;
+    gap: 8em;
+}
+
+.lastInfo {
+    display: flex;
+    gap: 8em;
 }
 
 /* #resultado {
