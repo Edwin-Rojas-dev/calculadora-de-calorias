@@ -9,18 +9,48 @@ function calcularCalorias() {
 
     const nombre = document.getElementById('nombre').value;
     const tipoDocumento = document.getElementById('tipo_documento').value;
-    const numeroDocumento = document.getElementById('numero_documento').value;
+    const numeroDocumento = parseInt(document.getElementById('numero_documento').value);
     const edad = parseInt(document.getElementById('edad').value);
     const peso = parseFloat(document.getElementById('peso').value);
     const altura = parseFloat(document.getElementById('altura').value);
     const actividadFisica = parseFloat(document.getElementById('actividad').value);
     const genero = document.querySelector('input[name="genero"]:checked').value;
 
-    // Verificar que se ingresen todos los datos
-    // if (!nombre || !tipoDocumento || !numeroDocumento || isNaN(edad) || isNaN(peso) || isNaN(altura) || isNaN(actividadFisica) || !genero) {
+    //Verificar que se ingresen todos los datos
+    //  if (!nombre || !tipoDocumento || !numeroDocumento || isNaN(edad) || isNaN(peso) || isNaN(altura) || isNaN(actividadFisica) || !genero) {
     //     mostrarMensajeDeError('Por favor complete todos los campos.');
     //     return;
-    // }
+    //  }
+
+    // Validate weight within a reasonable range 
+if (isNaN(peso) || peso <= 3 || peso > 110) {
+    mostrarMensajeDeError('Por favor ingrese un peso válido (entre 0 y 1000 kg).');
+    return;
+}
+
+// Validate document length
+if (numeroDocumento.length === 8 || numeroDocumento.length === 10) {
+    mostrarMensajeDeError('Por favor ingrese un número de documento válido (entre 7 y 10 caracteres).');
+    return;
+}
+
+//validate height
+if(altura < 40 || altura > 250){
+    mostrarMensajeDeError('Por favor ingrese su altura correcta en cm.');
+}
+
+// Validate if a string is a real number
+if (!/^\d*\.?\d+$/.test(edad)) {
+    mostrarMensajeDeError('Por favor ingrese una edad válida (número real).');
+    return;
+}
+
+// Ensure other fields are not empty
+if (!nombre || !tipoDocumento || !genero) {
+    mostrarMensajeDeError('Por favor complete todos los campos.');
+    return;
+}
+
 
     //Formula hombres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5
 
