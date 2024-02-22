@@ -3,55 +3,55 @@ document.getElementById('formulario-calculadora').addEventListener('submit', fun
     calcularCalorias();
 });
 
+document.getElementById('reset').addEventListener('click', function (event) {
+    event.preventDefault();
+    limpiarInputs();
+});
+
 
 function calcularCalorias() {
+    
+    const resultado = document.querySelector('#resultado');
+    resultado.style.display = 'block'; // Ensure visibility before updating content
 
 
     const nombre = document.getElementById('nombre').value;
     const tipoDocumento = document.getElementById('tipo_documento').value;
-    const numeroDocumento = parseInt(document.getElementById('numero_documento').value);
+    const numeroDocumento = document.getElementById('numero_documento').value;
     const edad = parseInt(document.getElementById('edad').value);
     const peso = parseFloat(document.getElementById('peso').value);
     const altura = parseFloat(document.getElementById('altura').value);
     const actividadFisica = parseFloat(document.getElementById('actividad').value);
     const genero = document.querySelector('input[name="genero"]:checked').value;
+    
 
-    //Verificar que se ingresen todos los datos
-    //  if (!nombre || !tipoDocumento || !numeroDocumento || isNaN(edad) || isNaN(peso) || isNaN(altura) || isNaN(actividadFisica) || !genero) {
-    //     mostrarMensajeDeError('Por favor complete todos los campos.');
-    //     return;
-    //  }
 
+    //otra forma de validar nombre if(nombre.value === '  ' ||  nombre.value === null)
+    // Verificar que se ingresen todos los datos
+    if (!nombre || !tipoDocumento || !numeroDocumento || isNaN(edad) || isNaN(peso) || isNaN(altura) || isNaN(actividadFisica) || !genero) {
+        mostrarMensajeDeError('Por favor complete todos los campos.');
+        return;
+        }
+         
     // Validate weight within a reasonable range 
-if (isNaN(peso) || peso <= 3 || peso > 110) {
-    mostrarMensajeDeError('Por favor ingrese un peso válido (entre 0 y 1000 kg).');
-    return;
-}
+    if (isNaN(peso) || peso <= 50 || peso > 110) {
+        mostrarMensajeDeError('Por favor ingrese un peso válido (entre 50 y 110 kg).');
+        return;
+    }
+    
+    // Validate document length
+    if (numeroDocumento.length !== 8 && numeroDocumento.length !== 10) {
+        mostrarMensajeDeError('Por favor ingrese un número de documento válido de 8  o 10 caracteres).');
+        return;
+    }
+    
+    //validate height
+    if(altura < 140 || altura > 250){
+        mostrarMensajeDeError('Por favor ingrese su altura correcta en cm.');
+        return;
+    }
 
-// Validate document length
-if (numeroDocumento.length === 8 || numeroDocumento.length === 10) {
-    mostrarMensajeDeError('Por favor ingrese un número de documento válido (entre 7 y 10 caracteres).');
-    return;
-}
-
-//validate height
-if(altura < 40 || altura > 250){
-    mostrarMensajeDeError('Por favor ingrese su altura correcta en cm.');
-}
-
-// Validate if a string is a real number
-if (!/^\d*\.?\d+$/.test(edad)) {
-    mostrarMensajeDeError('Por favor ingrese una edad válida (número real).');
-    return;
-}
-
-// Ensure other fields are not empty
-if (!nombre || !tipoDocumento || !genero) {
-    mostrarMensajeDeError('Por favor complete todos los campos.');
-    return;
-}
-
-
+    
     //Formula hombres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5
 
     //Formula mujeres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) - 161
@@ -66,8 +66,6 @@ if (!nombre || !tipoDocumento || !genero) {
     // tmb: tasa de metabolismo basal
     const caloriasTotales = tmb * actividadFisica;
 
-
-
     let grupoPoblacional;
     if (edad >= 15 && edad <= 29) {
         grupoPoblacional = 'Joven';
@@ -79,11 +77,8 @@ if (!nombre || !tipoDocumento || !genero) {
     }
     console.log(grupoPoblacional)
 
-
-
-
     // Mostrar mensaje con la información
-    const resultado = document.querySelector('#resultado');
+   
     console.log(resultado)
     resultado.innerHTML = `
         <div class="card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
@@ -94,8 +89,8 @@ if (!nombre || !tipoDocumento || !genero) {
         </div>
     `;
 
+  
    
-
 }
 
 
@@ -138,7 +133,7 @@ function aparecerResultado() {
 }
 
 function desvanecerResultado() {
-    let distancia = 1;
+    let distancia = 8;
 
     let id = setInterval(() => {
         distancia *= 2;
@@ -149,4 +144,23 @@ function desvanecerResultado() {
             resultado.style.top = 0;
         }
     }, 10)
+}
+
+function limpiarInputs() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('tipo_documento').value = '';
+    document.getElementById('numero_documento').value = '';
+    document.getElementById('edad').value = '';
+    document.getElementById('peso').value = '';
+    document.getElementById('altura').value = '';
+    document.getElementById('actividad').value = '';
+    // Clear radio button selection for 'genero'
+    const generoRadios = document.querySelectorAll('input[name="genero"]');
+    generoRadios.forEach(radio => {
+        radio.checked = false;
+    });
+    // Clear any displayed result or error message
+    const resultado = document.querySelector('#resultado');
+    resultado.innerHTML = '';
+    resultado.style.display = 'block'; 
 }
