@@ -162,5 +162,5 @@ function limpiarInputs() {
     // Clear any displayed result or error message
     const resultado = document.querySelector('#resultado');
     resultado.innerHTML = '';
-    resultado.style.display = 'block'; 
+    resultado.style.display = 'none'; 
 }
