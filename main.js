@@ -12,7 +12,7 @@ const getValueFrontend = () => {
         'numeroDocumento': document.getElementById('numero_documento').value,
         'edad': parseInt(document.getElementById('edad').value),
         'peso': parseFloat(document.getElementById('peso').value),
-        'altura': parseFloat(document.getElementById('actividad').value),
+        'altura': parseFloat(document.getElementById('altura').value),
         'actividadFisica': parseFloat(document.getElementById('actividad').value),
         'genero': document.querySelector('input[name="genero"]:checked').value
     }  
@@ -38,18 +38,18 @@ const verifyDataNotNull = () => {
 const calculateCalories = () => {
     //Formula hombres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5
     //Formula mujeres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) - 161
+    let peso = getValueFrontend().peso;
+    let altura = getValueFrontend().altura;
+    let edad = getValueFrontend().edad;
+    let genero = getValueFrontend().genero;
     let tmb;
-    if (getValueFrontend().genero === 'M') {
-        tmb = (10 * getValueFrontend().peso) + (6.25 * getValueFrontend().altura) - (5 * getValueFrontend().edad) + 5;
-    } else {
-        tmb = (10 * getValueFrontend().peso) + (6.25 * getValueFrontend().altura) - (5 * getValueFrontend().edad) - 161;
-    }
+    genero === 'M' ?
+    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5 :
+    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161;
 
     // // Calcular calorías totales según actividad física
     // tmb: tasa de metabolismo basal
-    console.log(tmb);
     const caloriasTotales = tmb * getValueFrontend().actividadFisica;
-    console.log(caloriasTotales);
     let grupoPoblacional = definePopulationGroup();
 
     // Mostrar mensaje con la información
@@ -81,7 +81,6 @@ const showMessageError= (msg) => {
     if (calculo) {
         calculo.remove();
     }
-
     const divError = document.createElement('div');
     divError.className = 'd-flex justify-content-center align-items-center h-100';
     divError.innerHTML = `<span class="alert alert-danger text-center">${msg}</span>`;
@@ -107,7 +106,6 @@ const showResultCss = (nombre, tipoDocumento, numeroDocumento, caloriasTotales, 
     `;
     resultado.style.top = '100vh';
     resultado.style.display = 'block';
-
     let distancia = 100;
     let resta = 0.3;
     let id = setInterval(() => {
@@ -121,7 +119,6 @@ const showResultCss = (nombre, tipoDocumento, numeroDocumento, caloriasTotales, 
 
 const hideResultCss = () => {
     let distancia = 1;
-
     let id = setInterval(() => {
         distancia *= 2;
         resultado.style.top = `${distancia}vh`;
