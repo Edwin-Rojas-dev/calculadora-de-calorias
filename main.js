@@ -81,12 +81,13 @@ if (!nombre || !tipoDocumento || !genero) {
 
 
 
-
     // Mostrar mensaje con la información
     const resultado = document.querySelector('#resultado');
     console.log(resultado)
     resultado.innerHTML = `
         <div class="card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
+           <img src="./img/calories.jpg" alt="logo" style="width:220px; border-radius: 8px;" >
+
             <h5 class="card-title h2">Calorías requeridas</h5>
             
             <p> El paciente: ${nombre} identificado con ${tipoDocumento} No.${numeroDocumento}, requiere un total de ${caloriasTotales.toFixed(0)} kcal para el sostenimiento de su TBM. Perteneciente al grupo poblacional: <strong>${grupoPoblacional} </strong> </p>
