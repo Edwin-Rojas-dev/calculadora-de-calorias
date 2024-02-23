@@ -3,10 +3,10 @@ document.getElementById('formulario-calculadora').addEventListener('submit', fun
     calcularCalorias();
 });
 
-// document.getElementById('reset').addEventListener('click', function (event) {
-//     event.preventDefault();
-//     limpiarInputs();
-// });
+document.getElementById('clean-message').addEventListener('click', function (event) {
+    event.preventDefault();
+    limpiarMensaje();
+});
 
 
 function calcularCalorias() {
@@ -141,21 +141,7 @@ function desvanecerResultado() {
     }, 10)
 }
 
-function limpiarInputs() {
-    document.getElementById('nombre').value = '';
-    document.getElementById('tipo_documento').value = '';
-    document.getElementById('numero_documento').value = '';
-    document.getElementById('edad').value = '';
-    document.getElementById('peso').value = '';
-    document.getElementById('altura').value = '';
-    document.getElementById('actividad').value = '';
-    // Clear radio button selection for 'genero'
-    const generoRadios = document.querySelectorAll('input[name="genero"]');
-    generoRadios.forEach(radio => {
-        radio.checked = false;
-    });
-    // Clear any displayed result or error message
-    const resultado = document.querySelector('#resultado');
+function limpiarMensaje() {
     resultado.innerHTML = '';
     resultado.style.display = 'none'; 
 }
