@@ -3,10 +3,10 @@ document.getElementById('formulario-calculadora').addEventListener('submit', fun
     calcularCalorias();
 });
 
-document.getElementById('reset').addEventListener('click', function (event) {
-    event.preventDefault();
-    limpiarInputs();
-});
+// document.getElementById('reset').addEventListener('click', function (event) {
+//     event.preventDefault();
+//     limpiarInputs();
+// });
 
 
 function calcularCalorias() {
@@ -24,32 +24,27 @@ function calcularCalorias() {
     const actividadFisica = parseFloat(document.getElementById('actividad').value);
     const genero = document.querySelector('input[name="genero"]:checked').value;
     
-
-
-    //otra forma de validar nombre if(nombre.value === '  ' ||  nombre.value === null)
-    // Verificar que se ingresen todos los datos
     if (!nombre || !tipoDocumento || !numeroDocumento || isNaN(edad) || isNaN(peso) || isNaN(altura) || isNaN(actividadFisica) || !genero) {
         mostrarMensajeDeError('Por favor complete todos los campos.');
         return;
         }
-         
-    // Validate weight within a reasonable range 
+          
     if (isNaN(peso) || peso <= 50 || peso > 110) {
         mostrarMensajeDeError('Por favor ingrese un peso válido (entre 50 y 110 kg).');
         return;
     }
     
-    // Validate document length
     if (numeroDocumento.length !== 8 && numeroDocumento.length !== 10) {
         mostrarMensajeDeError('Por favor ingrese un número de documento válido de 8  o 10 caracteres).');
         return;
     }
     
-    //validate height
     if(altura < 140 || altura > 250){
         mostrarMensajeDeError('Por favor ingrese su altura correcta en cm.');
         return;
     }
+
+    
 
     
     //Formula hombres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5
