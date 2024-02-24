@@ -26,6 +26,7 @@ const getValueFrontend = () => {
 }
 
 
+
 const verifyDataNotNull = () => {
     if (!getValueFrontend().nombre || 
         !getValueFrontend().tipoDocumento || 
@@ -58,6 +59,7 @@ const verifyDataNotNull = () => {
 
     
 }
+
 
 const calculateCalories = () => {
     
@@ -98,6 +100,7 @@ const definePopulationGroup = () => {
     } else {
         return'Adulto Mayor';
     }
+
 }
 
 

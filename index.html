@@ -12,32 +12,54 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="main.css">
 
-  
+
+  <!-- font-awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Scripts -->
+  <script src="main.js" defer></script>
+
+
+  <!-- fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+<!-- font awasome -->
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
   <title>Calculadora de calorías</title>
 </head>
 
 <body>
-  <header class="header">
-    <div class="bg-dark py-2">
+
+  <header class="header bg-color-custom" >
+    <div class="py-2">
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
+        
+        <nav class="navbar navbar-expand-sm " style="color:white">
           <div class="container-fluid">
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="navbar-brand" href="#main-calculator"><img src="img/alimentacion-saludable.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+              <ul class="navbar-nav me-auto">
+                <li  class="nav-item">
+                  <a class="nav-link" href="#main-calculator">Nutrición</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Nutrición</a>
+                  <a  class="nav-link" href="#main-calculator">Planes</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Planes</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contacto</a>
+                  <a  class="nav-link" href="#main-calculator">Contacto</a>
                 </li>
               </ul>
+              <form class="d-flex">
+                <input class="form-control me-2 " style="width: 100%;" type="text" placeholder="Search">
+                
+              </form>
             </div>
           </div>
         </nav>
@@ -45,95 +67,119 @@
     </div>
   </header>
 
-  <main class="main-content">
+
+  <div class="wrapper">
+    <div class="box">
+      <div class="left-col">
+        <h1>Descubre tus Calorias</h1>
+        <h2>Encuentra tu balance y bienestar</h2><br>
+        <p>La tasa metabólica basal (TMB) es la cantidad mínima de energía que necesita tu cuerpo para sobrevivir realizando las funciones básicas, tales como respirar, parpadear, filtrar la sangre, regular la temperatura del cuerpo o sintetizar hormonas.</p>
+        <p class="highlighted">Hombres  <br> TMB = (10 x peso de Kg) + (6,25 x altura en cm) – (5 x edad en años) + 5
+          Mujeres <br> TMB = (10 x peso en kg) + (6,25 x altura en cm) – (5 x edad en años) – 161</p>
+        <div class="btn"><a href="#main-calculator"><button class="buttonStart">Comencemos</button></a></div>
+      </div>
+      <div class="right-col">
+        <img src="./img/cover.png" alt="background food">
+      </div>
+      
+    </div>
+  </div>
+
+  <main class="main-content" id="main-calculator" >
     <section class="container">
       <div class="row py-4">
         <div class="card col-lg-7">
           <form id="formulario-calculadora">
             <fieldset>
-              <legend class="h2 text-center">Calculadora de Calorías</legend>
+              <legend class="h1 text-center" id="calculator">Calculadora de Calorías</legend>
               <div class="mb-3">
                 <label for="nombre" class="form-label h6">Nombre</label>
                 <input type="text" id="nombre" class="form-control" placeholder="Ingrese su nombre">
               </div>
-              <div class="mb-3">
-                <label for="tipo_documento" class="form-label h6">Tipo de Documento</label>
-                <select id="tipo_documento" class="form-select">
-                    <option value="cedula">Cédula</option>
-                    <option value="pasaporte">Pasaporte</option>
-                </select>
-            </div>
-            
-              <div class="mb-3">
-                <label for="numero_documento" class="form-label h6">Número de Documento</label>
-                <input type="number" id="numero_documento" class="form-control"
-                  placeholder="Ingrese su número de documento">
-              </div>
-              <div class="mb-3">
-                <label for="edad" class="form-label h6">Edad</label>
-                <input type="number" id="edad" class="form-control" min="15" max="80" placeholder="Digíte su edad">
-              </div>
-
-              <div class="mb-3">
-                <label for="peso" class="form-label h6">Peso</label>
-                <input type="number" id="peso" class="form-control" placeholder="Digíte su peso en kilogramos">
-              </div>
-
-              <div class="mb-3">
-                <label for="altura" class="form-label h6">Altura</label>
-                <input type="number" id="altura" class="form-control" placeholder="Digíte su altura en centímetros">
-              </div>
-
-              <div class="mb-3">
-                <label for="actividad" class="form-label h6">Actividad física</label>
-                <select id="actividad" class="form-select">
-                  <option></option>
-                  <option value="1.2">Poco o ningún ejercicio</option>
-                  <option value="1.375">Ejercicio ligero (1-3 días a la semana)</option>
-                  <option value="1.55">Ejercicio moderado (3-5 días a la semana)</option>
-                  <option value="1.725">Ejercicio fuerte (6-7 días a la semana)</option>
-                  <option value="1.9">Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</option>
-                </select>
-              </div>
-
-              <section class="row m-2 h-100">
-                <span class="h6 p-0">Sexo</span>
-                <div class="form-check">
-                  <input class="form-check-input" value="F" type="radio" name="genero" id="femenino" checked>
-                  <label class="form-check-label" for="femenino">
-                    Femenino
-                  </label>
+              <div class="inputInfo">
+                  <div class="mb-3 ">
+                    <label for="tipo_documento" class="form-label h6">Tipo de Documento</label>
+                    <select id="tipo_documento" class="form-select">
+                        <option value="cedula">Cédula</option>
+                        <option value="pasaporte">Pasaporte</option>
+                    </select>
                 </div>
-
-                <div class="form-check">
-                  <input class="form-check-input" value="M" type="radio" name="genero" id="masculino">
-                  <label class="form-check-label" for="masculino">
-                    Masculino
-                  </label>
+                
+                  <div class="mb-3">
+                    <label for="numero_documento" class="form-label h6">Número de Documento</label>
+                    <input type="number" id="numero_documento" class="form-control document"
+                      placeholder="Ingrese su número de documento">
+                  </div>
+              </div>
+              <div class="person">
+                <div class="mb-3">
+                  <label for="edad" class="form-label h6">Edad</label>
+                  <input type="number" id="edad" class="form-control data" min="15" max="80" placeholder="años">
                 </div>
-              </section>
+  
+                <div class="mb-3">
+                  <label for="peso" class="form-label h6">Peso</label>
+                  <input type="number" id="peso" class="form-control data" placeholder="kg">
+                </div>
+  
+                <div class="mb-3">
+                  <label for="altura" class="form-label h6">Altura</label>
+                  <input type="number" id="altura" class="form-control data" placeholder="cm">
+                </div>
+              </div>
+
+              <div class="lastInfo">
+                <div class="mb-3">
+                  <label for="actividad" class="form-label h6">Actividad física</label>
+                  <select id="actividad" class="form-select">
+                    <option></option>
+                    <option value="1.2">Poco o ningún ejercicio</option>
+                    <option value="1.375">Ejercicio ligero (1-3 días a la semana)</option>
+                    <option value="1.55">Ejercicio moderado (3-5 días a la semana)</option>
+                    <option value="1.725">Ejercicio fuerte (6-7 días a la semana)</option>
+                    <option value="1.9">Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</option>
+                  </select>
+                </div>
+  
+                <section class="row m-2 h-100">
+                  <div class="form-check">
+                    <input class="form-check-input" value="F" type="radio" name="genero" id="femenino" checked>
+                    <label class="form-check-label" for="femenino">
+                      Femenino
+                    </label>
+                  </div>
+  
+                  <div class="form-check">
+                    <input class="form-check-input" value="M" type="radio" name="genero" id="masculino">
+                    <label class="form-check-label" for="masculino">
+                      Masculino
+                    </label>
+                  </div>
+                </section>
+              </div>
+              
               <hr>
               <div class="d-flex justify-content-center my-3">
                 <button type="submit" class="btn btn-danger w-75" style="font-size: 1.5rem">Calcular</button>
                 <button type="submit" class="btn btn-secondary" id="clean-message"> Borrar mensaje </button>
-                <button type="reset"  id="erase-btn" class="btn btn-primary">Limpiar campos</button>
+                <button type="reset"  id="erase-btn" class="btn btn-primary">Limpiar campos</button>             
               </div>
             </fieldset>
           </form>
         </div>
 
-        <article class="card col" id="resultado">
+        <article style="font-size: 20px;" class="card col" id="resultado">
         </article>
       </div>
     </section>
   </main>
 
-  <footer class="footer row p-3">
-    <div class="col d-flex justify-content-right align-items-center">
+  <footer class="footer row p-3   ">
+    <div class="col d-flex justify-content-right align-items-center ">
       <ul>
-        <li>✖️ <a href="#">Instagram</a></li>
-        <li>✖️ <a href="#">Facebook</a></li>
-        <li>✖️ <a href="#">Telegram</a></li>
+        <li><img src="img/instagram.png" style="width:24px;margin-right:10px"alt=""><a href="#">Instagram</a></li>
+        <li><img src="img/facebook.png" style="width:24px;margin-right:10px"alt=""> <a href="#">Facebook</a></li>
+        <li><img src="img/telegrama.png" style="width:24px;margin-right:10px"alt=""> <a href="#">Telegram</a></li>
       </ul>
     </div>
 
@@ -145,11 +191,8 @@
       </ul>
     </div>
 
-    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-      <p class="m-0"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio voluptate qui adipisci,
-          hic voluptatibus totam dolorem cumque repellendus amet! Repudiandae, ab error unde porro sint fugit qui
-          temporibus, consequatur dolores sit quas perspiciatis omnis magnam iure ut, quod dignissimos molestias
-          voluptas architecto nam! Accusantium corporis sit eos dolorum accusamus.</span></p>
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center ">
+      <p class="m-0"><span>NatureEnergy Inc &copy 2024 Colombia, all rights reserved. </span></p>
     </div>
   </footer>
 
@@ -160,16 +203,8 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
 
-   
-    <!-- Scripts -->
-    <script type="module" src="main.js" defer></script>
+</body>
 
-  </body>
 
 </html>
