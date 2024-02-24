@@ -3,7 +3,13 @@ document.getElementById('formulario-calculadora').addEventListener('submit', fun
     verifyDataNotNull();
 });
 
+document.getElementById('clean-message').addEventListener('click', function (event) {
+    event.preventDefault();
+    limpiarMensaje();
+});
+
 const resultado = document.querySelector('#resultado');
+const divError = document.createElement('div');
 
 const getValueFrontend = () => {
     let listValues = {
@@ -31,11 +37,30 @@ const verifyDataNotNull = () => {
         !getValueFrontend().genero) {
         showMessageError('Por favor complete todos los campos.');
     } else{
+        if (isNaN(getValueFrontend().peso) || getValueFrontend().peso <= 50 || getValueFrontend().peso > 110) {
+            showMessageError('Por favor ingrese un peso válido (entre 50 y 110 kg).');
+            return;
+        }
+        
+        if (getValueFrontend().numeroDocumento.length !== 8 && getValueFrontend().numeroDocumento.length !== 10) {
+            showMessageError('Por favor ingrese un número de documento válido de 8  o 10 caracteres).');
+            return;
+        }
+        
+        if(getValueFrontend().altura < 140 || getValueFrontend().altura > 250){
+            showMessageError('Por favor ingrese su altura correcta en cm.');
+            return;
+        }
         calculateCalories();
     }
+          
+    
+
+    
 }
 
 const calculateCalories = () => {
+    
     //Formula hombres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5
     //Formula mujeres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) - 161
     let peso = getValueFrontend().peso;
@@ -53,7 +78,7 @@ const calculateCalories = () => {
     let grupoPoblacional = definePopulationGroup();
 
     // Mostrar mensaje con la información
-    showResultCss(
+    innerResponse(
         getValueFrontend().nombre,
         getValueFrontend().tipoDocumento, 
         getValueFrontend().numeroDocumento, 
@@ -81,7 +106,7 @@ const showMessageError= (msg) => {
     if (calculo) {
         calculo.remove();
     }
-    const divError = document.createElement('div');
+    
     divError.className = 'd-flex justify-content-center align-items-center h-100';
     divError.innerHTML = `<span class="alert alert-danger text-center">${msg}</span>`;
 
@@ -95,7 +120,8 @@ const showMessageError= (msg) => {
 
 
 // Animaciones
-const showResultCss = (nombre, tipoDocumento, numeroDocumento, caloriasTotales, grupoPoblacional) => {
+
+const innerResponse = (nombre, tipoDocumento, numeroDocumento, caloriasTotales, grupoPoblacional) =>{
     resultado.innerHTML = `
         <div class="card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
             <h5 class="card-title h2">Calorías requeridas</h5>
@@ -104,6 +130,9 @@ const showResultCss = (nombre, tipoDocumento, numeroDocumento, caloriasTotales, 
 
         </div>
     `;
+}
+
+const showResultCss = () => { 
     resultado.style.top = '100vh';
     resultado.style.display = 'block';
     let distancia = 100;
@@ -117,15 +146,14 @@ const showResultCss = (nombre, tipoDocumento, numeroDocumento, caloriasTotales, 
     }, 10)
 }
 
-const hideResultCss = () => {
+const hideMsjErrorCss = () => {
     let distancia = 1;
     let id = setInterval(() => {
         distancia *= 2;
-        resultado.style.top = `${distancia}vh`;
         if (distancia > 100) {
             clearInterval(id);
-            resultado.style.display = 'none';
-            resultado.style.top = 0;
+            divError.style.display = 'none';
+            divError.style.top = 0;
         }
     }, 10)
 }
