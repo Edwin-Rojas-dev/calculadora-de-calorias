@@ -154,6 +154,10 @@ header {
     border: 1px solid rgba(244, 244, 244, 0.84);
 }
 
+main #formulario-calculadora #calculator{
+    color: #b32b07;
+}
+
 /*form*/
 .card {
     padding: 2.4em;    

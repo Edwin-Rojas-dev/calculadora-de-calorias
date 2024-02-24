@@ -90,7 +90,7 @@ if (!nombre || !tipoDocumento || !genero) {
 
             <h5 class="card-title h2">Calorías requeridas</h5>
             
-            <p> El paciente: ${nombre} identificado con ${tipoDocumento} No.${numeroDocumento}, requiere un total de ${caloriasTotales.toFixed(0)} kcal para el sostenimiento de su TBM. Perteneciente al grupo poblacional: <strong>${grupoPoblacional} </strong> </p>
+            <p style="background-color: antiquewhite; padding: 10px; border-radius: 4px;"> El paciente: ${nombre} identificado con ${tipoDocumento} No.${numeroDocumento}, requiere un total de <strong style="color: #b32b07;"> ${caloriasTotales.toFixed(0)} kcal </strong>para el sostenimiento de su TBM. Perteneciente al grupo poblacional: <strong>${grupoPoblacional} </strong> </p>
 
         </div>
     `;
