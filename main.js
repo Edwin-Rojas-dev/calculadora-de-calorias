@@ -5,7 +5,7 @@ document.getElementById('formulario-calculadora').addEventListener('submit', fun
 
 document.getElementById('clean-message').addEventListener('click', function (event) {
     event.preventDefault();
-    limpiarMensaje();
+    cleanMessage();
 });
 
 const resultado = document.querySelector('#resultado');
@@ -38,7 +38,7 @@ const verifyDataNotNull = () => {
         !getValueFrontend().genero) {
         showMessageError('Por favor complete todos los campos.');
     } else{
-        if (isNaN(getValueFrontend().peso) || getValueFrontend().peso <= 50 || getValueFrontend().peso > 110) {
+        if (isNaN(getValueFrontend().peso) || getValueFrontend().peso < 50 || getValueFrontend().peso > 110) {
             showMessageError('Por favor ingrese un peso válido (entre 50 y 110 kg).');
             return;
         }
@@ -159,4 +159,11 @@ const hideMsjErrorCss = () => {
             divError.style.top = 0;
         }
     }, 10)
+}
+
+const cleanMessage = () => {
+    divError.innerHTML = '';
+    divError.style.display = 'none'; 
+    calculo.innerHTML = '';
+    calculo.style.display = 'none'; 
 }
