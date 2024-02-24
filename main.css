@@ -40,26 +40,41 @@ body::-webkit-scrollbar-thumb {
     background-color: rgb(122, 0, 0);
 }
 
-<<<<<<< HEAD
-
-/* header */
-=======
 body{
     font-family: "Quicksand", sans-serif;
 }
+
+header {
+    background-color: #fa6941;
+}
+
 /* header */
 .header a {
-    font-size: 1.5em;
+    font-size: 0.75em;
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    margin-left: 0.8em;
+    margin-right: 0.8em;
 }
-.header a.active {
-    text-decoration: underline;
-    color: #ff0000 !important;
-}
-.bg-color-custom{
-    background-color: #D98E04;
-}
->>>>>>> af8b77d9893ff1739bf6ad273db3c7219b43c685
+// .header a.active {
+//     text-decoration: underline;
+//     color: #ff0000 !important;
+// }
 
+.navbar {
+    background-color: #f77652;
+}
+
+.navbar-nav{
+    background-color:#f4f4f4;
+    border-radius: 8px;
+
+}
+
+.navbar-nav li a {
+    color: #1c1e20;
+    list-style-type: none;
+}
 
 /*wrapper hero */
 .wrapper {
@@ -121,24 +136,12 @@ body{
     overflow: hidden;
 }
 
-<<<<<<< HEAD
 
 
 .main-content {
     width: 100%;
     background: linear-gradient(45deg,  #FAA441 , #fa6941 , #fd5d31);
 
-=======
-h1{
-    font-size: 30px;
-}
-
-.main-content {
-    background-image: linear-gradient(#000000,#00000054), url('img/pexels-shameel-mukkath-5639200.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
->>>>>>> af8b77d9893ff1739bf6ad273db3c7219b43c685
 }
 .main-content .card {
     color:#1c1e20;
@@ -151,7 +154,6 @@ h1{
     border: 1px solid rgba(244, 244, 244, 0.84);
 }
 
-<<<<<<< HEAD
 /*form*/
 .card {
     padding: 2.4em;    
@@ -229,11 +231,6 @@ h1{
     font-size: 1.rem;
     font-family: "Merriweather", serif;
     
-=======
-button[type="submit"]{
-    background-color: #D98E04;
-    color: #FFF;
->>>>>>> af8b77d9893ff1739bf6ad273db3c7219b43c685
 }
 
 
@@ -243,21 +240,19 @@ button[type="submit"]{
 
 
 /* footer */
-<<<<<<< HEAD
-=======
 .footer {
-    background-color:  #D98E04;
-    color: #fff;
+    background-color: #da441b;
+    color: #f1d3d3;
     margin: 0;
 }
 
 .footer ul {
     list-style: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 .footer a {
     text-decoration: none;
     color: rgb(223, 223, 223);
 }
->>>>>>> af8b77d9893ff1739bf6ad273db3c7219b43c685
